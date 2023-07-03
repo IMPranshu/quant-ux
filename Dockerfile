@@ -6,7 +6,7 @@ USER node
 WORKDIR /home/node
 
 COPY --chown=node:node ["package.json", "package-lock.json", "./"]
-RUN apk add --update python make g++\
+RUN apk add --update python3 make g++\
    && rm -rf /var/cache/apk/*
 RUN npm install
 COPY --chown=node:node . .
