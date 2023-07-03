@@ -1,13 +1,13 @@
 FROM node:12-buster-slim AS builder
 
-RUN apk --no-cache add make python3 g++
+RUN apk --no-cache add make python g++
 
 USER node
 WORKDIR /home/node
 
 COPY --chown=node:node ["package.json", "package-lock.json", "./"]
 RUN apk --no-cache --virtual build-dependencies add \
-        python3 \
+        python \
         make \
         g++
 RUN npm install
