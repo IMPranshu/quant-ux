@@ -6,10 +6,6 @@ USER node
 WORKDIR /home/node
 
 COPY --chown=node:node ["package.json", "package-lock.json", "./"]
-RUN apk --no-cache --virtual build-dependencies add \
-        python3 \
-        make \
-        g++
 RUN npm install
 COPY --chown=node:node . .
 RUN npm run build
