@@ -1,13 +1,15 @@
 FROM node:12-buster-slim AS builder
 
 RUN apk --no-cache add make python3 g++
+RUN apt-get update && apt-get install -y python
+ENV PYTHON=/usr/bin/python3
+RUN npm config set python /usr/bin/python
+
 
 USER node
 WORKDIR /home/node
 
 COPY --chown=node:node ["package.json", "package-lock.json", "./"]
-RUN apk add --update python3 make g++\
-   && rm -rf /var/cache/apk/*
 RUN npm install
 COPY --chown=node:node . .
 RUN npm run build
