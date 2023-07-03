@@ -3,7 +3,7 @@ FROM node:12-buster-slim AS builder
 RUN apk --no-cache add make python3 g++
 RUN apt-get update && apt-get install -y python
 ENV PYTHON=/usr/bin/python3
-RUN npm config set python /usr/bin/python
+RUN npm config set python3 /usr/bin/python
 
 
 USER node
