@@ -1,4 +1,4 @@
-FROM node:16-alpine AS builder
+FROM node:12-buster-slim AS builder
 
 RUN apk --no-cache add make python3 g++
 
